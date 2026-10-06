@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Perawat</title>
+  <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">Klinik <span>Sehat</span></div>
+  <a th:href="@{/admin/admin-menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+
+  <h2 class="dokter-header-title">Daftar Perawat</h2>
+  <p class="dokter-header-subtitle">
+    Data perawat diambil dari tabel <code>pengguna</code> dengan role = <b>perawat</b>.
+  </p>
+
+  <div class="pasien-table-wrapper">
+    <table class="pasien-table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nama</th>
+        <th>Umur</th>
+        <th>Gender</th>
+        <th>Alamat</th>
+        <th>No. Telp</th>
+        <th>Username</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="perawat : ${perawatList}">
+        <td th:text="${perawat.idPengguna}">2</td>
+        <td th:text="${perawat.nama}">Siti Perawat</td>
+        <td th:text="${perawat.umur}">28</td>
+        <td th:text="${perawat.gender}">P</td>
+        <td th:text="${perawat.alamat}">Bantul</td>
+        <td th:text="${perawat.noTelp}">0812…</td>
+        <td th:text="${perawat.username}">perawat01</td>
+      </tr>
+      <tr th:if="${#lists.isEmpty(perawatList)}">
+        <td colspan="7" class="pasien-empty">
+          Belum ada data perawat.
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+</body>
+</html>

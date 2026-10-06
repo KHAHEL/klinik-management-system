@@ -1,0 +1,91 @@
+    <!DOCTYPE html>
+    <html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Menu Untuk Dokter</title>
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" th:href="@{/css/dokter.css}">
+    </head>
+    <body>
+
+        <header class="topbar">
+        <div class="brand">
+            Klinik <span>Sehat</span>
+        </div>
+
+
+        <a th:href="@{/logout}" class="logout-btn">Logout</a>
+        </header>
+
+        <section>
+            <h2 class="dokter-header-title">Menu Dokter</h2>
+
+            <p class="dokter-header-subtitle">
+            Selamat datang,
+            <span th:text="${dokter != null} ? dokter.spesialisasi : 'Dokter'">Dokter</span>.
+            Silakan pilih menu untuk mengelola jadwal dan informasi klinik.
+            </p>
+
+
+        </section>
+
+        <section class="dokter-menu-grid">
+
+            <article class="dokter-card">
+            <div class="dokter-card-icon">
+                <i class="fa-solid fa-calendar-check"></i>
+            </div>
+            <h3>Jadwal Praktek</h3>
+            <p>Kelola jadwal praktek Anda.</p>
+
+            <a th:href="@{/dokter/jadwal}" class="dokter-card-btn">
+                Kelola Jadwal
+            </a>
+            </article>
+
+            <article class="dokter-card">
+            <div class="dokter-card-icon">
+                <i class="fa-solid fa-users"></i>
+            </div>
+
+            <h3>Pasien (Semua)</h3>
+            <p>Daftar semua pasien yang terdaftar di sistem.</p>
+
+            <a th:href="@{/dokter/pasien}" class="dokter-card-btn">
+            Lihat Semua Pasien
+            </a>
+            </article>
+
+            <article class="dokter-card">
+            <div class="dokter-card-icon">
+                <i class="fa-solid fa-stethoscope"></i>
+            </div>
+
+            <h3>Pasien per Poli</h3>
+            <p>Lihat daftar pasien dalam poli tertentu.</p>
+
+            <a th:href="@{/dokter/pasien/poli/Umum}" class="dokter-card-btn">
+                Lihat Pasien Poli
+            </a>
+            </article>
+
+            <article class="dokter-card">
+            <div class="dokter-card-icon">
+                <i class="fa-solid fa-user-doctor"></i>
+            </div>
+
+            <h3>Profil Saya</h3>
+            <p>Lihat informasi pribadi Anda sebagai dokter.</p>
+
+            <a th:href="@{/dokter/profil}" class="dokter-card-btn">
+                Lihat Profil
+            </a>
+            </article>
+
+        </section>
+        </main>
+
+    </body>
+    </html>
+    </body>
+    </html>

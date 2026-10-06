@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Daftar Pasien Mengantre</title>
+  <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">Klinik <span>Sehat</span></div>
+  <a th:href="@{/admin/admin-menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+  <h2 class="dokter-header-title">Daftar Pasien Mengantre</h2>
+
+  <div class="pasien-table-wrapper">
+    <table class="pasien-table">
+      <thead>
+      <tr>
+        <th>No</th>
+        <th>ID Daftar</th>
+        <th>ID Pasien</th>
+        <th>Nama Pasien</th>
+        <th>Poli</th>
+        <th>Tanggal Daftar</th>
+        <th>No Antrian</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <tr th:each="p, iter : ${pendaftaranPoliList}">
+        <td th:text="${iter.index + 1}"></td>
+
+        <td th:text="${p.idDaftar}"></td>
+
+        <!-- FIX: Pasien & nama -->
+        <td th:text="${p.pasien.idPengguna}">3</td>
+        <td th:text="${p.pasien.nama}">Nama Pasien</td>
+
+        <td th:text="${p.poli}"></td>
+        <td th:text="${p.tglDaftar}"></td>
+        <td th:text="${p.noAntrian}"></td>
+        <td th:text="${p.status}"></td>
+      </tr>
+
+      <tr th:if="${#lists.isEmpty(pendaftaranPoliList)}">
+        <td colspan="8" class="pasien-empty">Belum ada pasien yang mendaftar.</td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+</body>
+</html>

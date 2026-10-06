@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Dokter</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">
+        Klinik <span>Sehat</span>
+    </div>
+    <a th:href="@{/admin/admin-menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+    <h2 class="dokter-header-title">Daftar Dokter</h2>
+
+    <div class="pasien-table-wrapper">
+        <table class="pasien-table">
+            <thead>
+            <tr>
+                <th>ID Pengguna</th>
+                <th>Nama Dokter</th>
+                <th>Spesialisasi</th>
+                <th>No. Registrasi</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="d : ${dokterList}">
+                <!-- pakai field Java: idPengguna, nama, spesialisasi, noRegis -->
+                <td th:text="${d.idPengguna}">1</td>
+                <td th:text="${d.nama}">dr. Umum 1</td>
+                <td th:text="${d.spesialisasi}">Umum</td>
+                <td th:text="${d.noRegis}">REG-001</td>
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(dokterList)}">
+                <td colspan="4" class="pasien-empty">
+                    Belum ada data dokter.
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+</body>
+</html>

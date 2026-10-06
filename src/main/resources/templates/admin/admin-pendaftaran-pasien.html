@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pendaftaran Pasien Baru</title>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" th:href="@{/css/admin.css}" />
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="brand">Klinik <span>Sehat</span></div>
+  <a th:href="@{/admin/admin-menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+
+  <section>
+    <h2 class="dokter-header-title">Pendaftaran Pasien Baru</h2>
+    <p class="dokter-header-subtitle">
+      Isi data diri pasien secara lengkap untuk membuat akun baru dan memulai pendaftaran layanan.
+    </p>
+  </section>
+
+  <section class="dokter-card pasien-card">
+    <header class="pasien-header">
+      <div>
+        <h3>Form Pendaftaran Pasien</h3>
+        <p>Isi semua data pasien dengan benar.</p>
+      </div>
+    </header>
+
+    <form th:action="@{/admin/pendaftaran-pasien}" method="post" class="admin-form"
+          th:object="${pasienInfo}">
+
+      <div class="form-row">
+        <label>Nama Lengkap</label>
+        <input type="text" th:field="*{nama}" required>
+      </div>
+
+      <div class="form-row">
+        <label>Umur</label>
+        <input type="number" th:field="*{umur}" required>
+      </div>
+
+      <div class="form-row">
+        <label>Gender</label>
+        <select th:field="*{gender}" required>
+          <option value="">-- pilih --</option>
+          <option value="L">Laki-laki</option>
+          <option value="P">Perempuan</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>No Telepon</label>
+        <input type="text" th:field="*{noTelp}" required>
+      </div>
+
+      <div class="form-row full">
+        <label>Alamat</label>
+        <textarea th:field="*{alamat}" required></textarea>
+      </div>
+
+      <div class="form-row full">
+        <label>Keluhan Utama</label>
+        <textarea th:field="*{keluhan}" required></textarea>
+      </div>
+
+      <div class="form-row full">
+        <label>Riwayat Medis</label>
+        <textarea th:field="*{riwayatMedis}"></textarea>
+      </div>
+
+      <div class="form-row">
+        <label>Username</label>
+        <input type="text" th:field="*{username}" required>
+      </div>
+
+      <div class="form-row">
+        <label>Password</label>
+        <input type="password" th:field="*{password}" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="dokter-card-btn">
+          <i class="fa-solid fa-user-plus" style="margin-right:6px;"></i>
+          Daftarkan Pasien
+        </button>
+      </div>
+
+    </form>
+  </section>
+
+</main>
+
+</body>
+</html>

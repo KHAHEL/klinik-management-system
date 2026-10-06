@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Daftar Pasien (Semua)</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/dokter.css" />
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        Klinik <span>Sehat</span>
+    </div>
+
+
+<a th:href="@{/dokter/menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+
+    <section>
+        <h2 class="dokter-header-title">Daftar Pasien</h2>
+        <p class="dokter-header-subtitle">
+            Semua pasien yang sudah memiliki data di tabel <code>pasien</code>.
+        </p>
+
+
+    </section>
+
+    <section class="dokter-card pasien-card">
+        <header class="pasien-header">
+            <div>
+                <h3>Semua Pasien</h3>
+                <p>Pasien yang sudah memiliki keluhan &amp; riwayat medis.</p>
+            </div>
+        </header>
+
+        <div class="pasien-table-wrapper">
+            <table class="pasien-table">
+                <thead>
+                    <tr>
+                        <th>ID Pengguna</th>
+                        <th>Keluhan</th>
+                        <th>Riwayat Medis</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="p : ${pasienList}">
+                <!-- kalau di entity namanya idPengguna -->
+                <td th:text="${p.idPengguna}">7</td>
+
+                <!-- ini sudah benar kalau field-nya keluhan & riwayatMedis -->
+                <td th:text="${p.keluhan}">Sakit kepala</td>
+                <td th:text="${p.riwayatMedis}">Hipertensi ringan</td>
+            </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>

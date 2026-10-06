@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Profil Admin</title>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        Klinik <span>Sehat</span>
+    </div>
+    <a th:href="@{/admin/admin-menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+
+    <div th:if="${pengguna == null}">
+        <h2 class="dokter-header-title">Profil Admin</h2>
+        <p class="dokter-header-subtitle">Data admin tidak ditemukan.</p>
+        <p><a th:href="@{/admin/admin-menu}" class="dokter-card-btn">Kembali ke Menu</a></p>
+    </div>
+
+    <section th:if="${pengguna != null}">
+
+        <section>
+            <h2 class="dokter-header-title">Profil Admin</h2>
+            <p class="dokter-header-subtitle">Informasi akun dan detail pekerjaan admin.</p>
+        </section>
+        <section class="profil-layout">
+
+            <article class="profil-card profil-main-card">
+                <div class="profil-avatar">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+
+                <h3 class="profil-name" th:text="${pengguna.nama}">Nama Admin</h3>
+                <p class="profil-role">
+                    <span>Administrator Sistem</span>
+                </p>
+
+                <div class="profil-badge">
+                    <span>Role</span>
+                    <strong th:text="${pengguna.role}">admin</strong>
+                </div>
+
+                <p class="profil-username">
+                    <i class="fa-solid fa-at"></i>
+                    <span th:text="${pengguna.username}">username</span>
+                </p>
+            </article>
+
+            <article class="profil-card profil-detail-card">
+                <h3>Detail Akun & Informasi Admin</h3>
+
+                <dl class="profil-detail-list">
+    <div class="profil-detail-row">
+        <dt>ID Pengguna</dt>
+        <!-- DULU: pengguna.id_pengguna -->
+        <dd th:text="${pengguna.idPengguna}"></dd>
+    </div>
+
+    <div class="profil-detail-row">
+        <dt>Username</dt>
+        <dd th:text="${pengguna.username}"></dd>
+    </div>
+
+    <div class="profil-detail-row">
+        <dt>Role</dt>
+        <dd th:text="${pengguna.role}"></dd>
+    </div>
+
+    <div class="profil-detail-row" th:if="${admin != null}">
+        <dt>Departemen</dt>
+        <dd th:text="${admin.department}"></dd>
+    </div>
+
+    <div class="profil-detail-row" th:if="${admin != null}">
+        <dt>Shift</dt>
+        <dd th:text="${admin.shift}"></dd>
+    </div>
+
+    <div class="profil-detail-row" th:if="${admin != null}">
+        <dt>Email</dt>
+        <dd th:text="${admin.email}"></dd>
+    </div>
+
+    <div class="profil-detail-row" th:if="${admin != null}">
+        <dt>Gaji</dt>
+        <dd th:text="${#numbers.formatInteger(admin.gaji, 0, 'POINT')}"></dd>
+    </div>
+</dl>
+
+
+                <div class="profil-actions">
+                    <a th:href="@{/admin/admin-menu}" class="dokter-card-btn">
+                        Kembali ke Menu Admin
+                    </a>
+                </div>
+            </article>
+
+        </section>
+    </section>
+</main>
+
+</body>
+</html>

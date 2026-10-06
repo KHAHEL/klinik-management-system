@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Profil Dokter</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/dokter.css" />
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        Klinik <span>Sehat</span>
+    </div>
+    <a th:href="@{/dokter/menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+
+    <section>
+        <h2 class="dokter-header-title">Edit Profil Dokter</h2>
+        <p class="dokter-header-subtitle">
+            Ubah username, spesialisasi, dan gaji Anda.
+        </p>
+    </section>
+
+    <section class="profil-layout">
+        <article class="profil-card profil-detail-card">
+            <form th:action="@{/dokter/profil/update}" method="post" class="profil-form">
+
+                <!-- ID hanya display, tidak bisa diubah -->
+                <div class="profil-detail-row">
+                    <label>ID Pengguna</label>
+                    <span th:text="${pengguna.idPengguna}">1</span>
+                </div>
+
+                <div class="profil-detail-row">
+                    <label>ID Dokter</label>
+                    <span th:text="${dokter.idPengguna}">1</span>
+                </div>
+
+                <div class="profil-detail-row">
+                    <label>Username</label>
+                    <input type="text" name="username"
+                           th:value="${pengguna.username}" required />
+                </div>
+
+                <div class="profil-detail-row">
+                    <label>Spesialisasi</label>
+                    <input type="text" name="spesialisasi"
+                           th:value="${dokter.spesialisasi}" required />
+                </div>
+
+                <div class="profil-detail-row">
+                    <label>Gaji (Rp)</label>
+                    <input type="number" name="gaji"
+                           min="0"
+                           th:value="${dokter.gaji}" />
+                </div>
+
+                <div class="profil-actions">
+                    <button type="submit" class="dokter-card-btn">
+                        Simpan Perubahan
+                    </button>
+                    <a th:href="@{/dokter/profil}" class="dokter-card-btn">
+                        Batal
+                    </a>
+                </div>
+            </form>
+        </article>
+    </section>
+
+</main>
+
+</body>
+</html>

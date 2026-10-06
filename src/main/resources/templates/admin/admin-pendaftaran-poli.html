@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Pendaftaran Pasien Baru (via Poli)</title>
+
+    <!-- Icon & CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" th:href="@{/css/admin.css}" />
+    <link rel="stylesheet" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" th:href="@{/css/table.css}" />
+    <link rel="stylesheet" th:href="@{/css/form.css}" />
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">Klinik <span>Sehat</span></div>
+    <a th:href="@{/admin/admin-menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+
+    <!-- TITLE + SUBMENU -->
+    <section>
+        <h2 class="dokter-header-title">Daftarkan Pasien Baru (via Poli)</h2>
+        <p class="dokter-header-subtitle">
+            Tambahkan pendaftaran pasien ke poli tertentu. Admin atau perawat akan tercatat otomatis.
+        </p>
+
+        <div class="submenu">
+            <a th:href="@{/admin/home}">Menu Utama</a>
+            <a th:href="@{/admin/antrian}">Pasien Mengantre</a>
+            <a href="#" class="active">Pendaftaran Poli</a>
+        </div>
+    </section>
+
+    <!-- TABEL PENDAFTARAN POLI -->
+    <section class="dokter-card pasien-card">
+        <header class="pasien-header">
+            <div>
+                <h3>Daftar Pendaftaran Poli</h3>
+                <p>Data berasal dari tabel <code>pendaftaran_pasien</code>.</p>
+            </div>
+        </header>
+
+        <div class="first-box mt-4">
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>ID Daftar</th>
+                    <th>ID Pasien</th>
+                    <th>Nama Pasien</th>
+                    <th>Admin Pendaftar</th>
+                    <th>Poli</th>
+                    <th>Tanggal</th>
+                    <th>No Antrian</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="p, iter : ${pendaftaranPoliList}">
+                    <td th:text="${iter.index + 1}">1</td>
+
+                    <td>
+                        <a th:href="@{'/admin/pendaftaran-poli/edit/' + ${p.idDaftar}}"
+                           class="link-edit">
+                            <span th:text="${p.idDaftar}">1</span>
+                        </a>
+                    </td>
+
+                    <!-- PASIEN -->
+                    <td th:text="${p.pasien.idPengguna}">3</td>
+                    <td th:text="${p.pasien.nama}">Nama Pasien</td>
+
+                    <!-- ADMIN PENDAFTAR -->
+                    <td th:text="${p.adminPendaftar != null ? p.adminPendaftar.nama : 'Pasien Sendiri'}">
+                        admin
+                    </td>
+
+                    <td th:text="${p.poli}">Umum</td>
+                    <td th:text="${p.tglDaftar}">2025-11-27</td>
+                    <td th:text="${p.noAntrian}">1</td>
+                    <td th:text="${p.status}">MENUNGGU</td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(pendaftaranPoliList)}">
+                    <td colspan="9" style="text-align:center;">
+                        Belum ada pendaftaran poli.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- FORM PENDAFTARAN BARU -->
+    <section class="dokter-card pasien-card">
+        <header class="pasien-header">
+            <h3>Form Pendaftaran Baru</h3>
+            <p>Pilih pasien & poli. Admin yg login akan tercatat otomatis.</p>
+        </header>
+
+        <form th:action="@{/admin/pendaftaran-poli}" method="post" class="admin-form">
+
+            <!-- PILIH PASIEN -->
+            <div class="form-row">
+                <label>Pasien</label>
+                <select name="pasienId" required>
+                    <option value="" disabled selected>-- pilih pasien --</option>
+                    <option th:each="p : ${pasienList}"
+                            th:value="${p.idPengguna}"
+                            th:text="${p.idPengguna + ' - ' + p.nama}">
+                        1 - Contoh Pasien
+                    </option>
+                </select>
+            </div>
+
+            <!-- POLI -->
+            <div class="form-row">
+                <label>Poli</label>
+                <select name="poli" required>
+                    <option value="" disabled selected>-- pilih poli --</option>
+                    <option value="Umum">Umum</option>
+                    <option value="Gigi">Gigi</option>
+                    <option value="Anak">Anak</option>
+                </select>
+            </div>
+
+            <!-- TANGGAL -->
+            <div class="form-row">
+                <label>Tanggal Daftar</label>
+                <input type="date" name="tglDaftar" required />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="dokter-card-btn">
+                    <i class="fa-solid fa-user-plus" style="margin-right:6px;"></i>
+                    Daftarkan
+                </button>
+            </div>
+
+        </form>
+    </section>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,145 @@
+/* ============================
+   WRAPPER FORM EDIT PROFIL
+   ============================ */
+
+.second-box {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    background: #1e1e1e;
+    padding: 25px 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+    color: #e5e5e5;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.second-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ============================
+   FORM DASAR
+   ============================ */
+
+.admin-form {
+    width: 100%;
+}
+
+.admin-form * {
+    box-sizing: border-box;
+}
+
+.admin-form label {
+    display: block;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+}
+
+.admin-form input,
+.admin-form select,
+.admin-form textarea {
+    display: block;
+    width: 100%;
+    padding: 8px 14px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-form input:focus,
+.admin-form select:focus,
+.admin-form textarea:focus {
+    border-color: #00c853;
+    outline: none;
+    background-color: #333333;
+    box-shadow: 0 0 6px rgba(0, 200, 83, 0.4);
+}
+
+/* Untuk textarea sedikit lebih tinggi */
+.admin-form textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+/* ============================
+   ROW & LAYOUT
+   ============================ */
+
+.form-row {
+    margin-bottom: 12px;
+}
+
+/* Kalau mau 2 kolom di desktop, tinggal tambah class .two-col di parent */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+/* ============================
+   BUTTONS
+   ============================ */
+
+.form-actions {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.form-actions button {
+    min-width: 140px;
+}
+
+/* Style umum tombol agar mirip feedback-form */
+.admin-form button[type=submit],
+.admin-form button {
+    display: inline-block;
+    height: 38px;
+    padding: 8px 18px;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    color: #ffffff;
+    background: linear-gradient(90deg, #00c853, #00796b);
+    transition: 0.3s;
+}
+
+/* Hover efek */
+.admin-form button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(90deg, #1de9b6, #00bfa5);
+}
+
+/* Override untuk tombol delete biar kelihatan bahaya */
+.admin-form button.btn-danger {
+    background: linear-gradient(90deg, #e53935, #b71c1c);
+}
+
+.admin-form button.btn-danger:hover {
+    background: linear-gradient(90deg, #ff5252, #d32f2f);
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+@media (max-width: 768px) {
+    .second-box {
+        padding: 20px 18px 25px;
+        margin: 0 8px 30px;
+    }
+
+    .two-col {
+        grid-template-columns: 1fr;
+    }
+}

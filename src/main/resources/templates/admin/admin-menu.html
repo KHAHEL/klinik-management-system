@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Admin</title>
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link rel="stylesheet" th:href="@{/css/admin.css}" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    Klinik <span>Sehat</span>
+  </div>
+
+  <a th:href="@{/logout}" class="logout-btn">Logout</a>
+</header>
+
+<main class="dokter-wrapper">
+
+  <section>
+    <h2 class="dokter-header-title">Menu Admin</h2>
+    <p class="dokter-header-subtitle">
+      Selamat datang,
+      <span th:text="${pengguna != null ? pengguna.nama : 'Admin Klinik'}">
+    Admin Klinik
+    </span>.
+      Silakan pilih menu untuk mengelola data klinik.
+    </p>
+
+  </section>
+
+  <section class="dokter-menu-grid">
+
+    <article class="dokter-card">
+      <div class="dokter-card-icon">
+        <i class="fa-solid fa-user-doctor"></i>
+      </div>
+      <h3>Lihat Daftar Dokter</h3>
+      <p>Daftar dokter yang terdaftar di klinik.</p>
+      <a th:href="@{/admin/dokter}" class="dokter-card-btn">
+    Lihat Dokter
+    </a>
+
+    </article>
+
+    <article class="dokter-card">
+      <div class="dokter-card-icon">
+        <i class="fa-solid fa-user-nurse"></i>
+      </div>
+      <h3>Lihat Daftar Perawat</h3>
+      <p>Perawat yang bertugas di klinik.</p>
+      <a th:href="@{/admin/perawat}" class="dokter-card-btn">
+        Lihat Perawat
+      </a>
+    </article>
+
+    <article class="dokter-card">
+      <div class="dokter-card-icon">
+        <i class="fa-solid fa-people-arrows"></i>
+      </div>
+      <h3>Lihat Pasien Mengantre</h3>
+      <p>Pasien yang sedang terdaftar di poli.</p>
+      <a th:href="@{/admin/antrian}" class="dokter-card-btn">
+        Lihat Antrian
+      </a>
+    </article>
+
+    <article class="dokter-card">
+      <div class="dokter-card-icon">
+        <i class="fa-solid fa-user-plus"></i>
+      </div>
+      <h3>Daftarkan Pasien Baru</h3>
+      <p>Tambah pendaftaran pasien.</p>
+      <a th:href="@{/admin/pendaftaran}" class="dokter-card-btn">
+        Daftarkan Pasien
+      </a>
+    </article>
+
+    <article class="dokter-card">
+      <div class="dokter-card-icon">
+        <i class="fa-solid fa-user-plus"></i>
+      </div>
+      <h3>Daftarkan Pasien Baru via Poli</h3>
+      <p>Tambah pendaftaran pasien via Poli.</p>
+      <a th:href="@{/admin/pendaftaran-poli}" class="dokter-card-btn">
+        Daftarkan Pasien
+      </a>
+    </article>
+    <article class="dokter-card">
+      <div class="dokter-card-icon">
+        <i class="fa-solid fa-id-badge"></i>
+      </div>
+      <h3>Lihat Profil Saya</h3>
+      <p>Informasi akun admin klinik.</p>
+      <a th:href="@{/admin/profil}" class="dokter-card-btn">
+    Lihat Profil
+</a>
+
+    </article>
+
+    </article>
+
+  </section>
+
+</main>
+
+</body>
+</html>

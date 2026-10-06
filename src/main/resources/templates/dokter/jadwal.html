@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Jadwal Praktek Dokter</title>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/dokter.css" />
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        Klinik <span>Sehat</span>
+    </div>
+
+    <a th:href="@{/dokter/menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+
+    <section>
+        <h2 class="dokter-header-title">
+            Jadwal Praktek Dokter
+        </h2>
+        <p class="dokter-header-subtitle">
+            Jadwal praktek dokter di Klinik Sehat. Jadwal ini bersifat tetap dan hanya sebagai informasi bagi pasien.
+        </p>
+    </section>
+
+    <section class="jadwal-layout">
+        <div class="jadwal-card">
+            <div class="jadwal-card-header">
+                <h3>Jadwal Praktek</h3>
+                <p>Berikut jadwal praktek dokter umum, gigi, dan anak.</p>
+            </div>
+
+            <div class="jadwal-table-wrapper">
+                <table class="jadwal-table">
+                    <thead>
+                    <tr>
+                        <th>Hari</th>
+                        <th>Jam</th>
+                        <th>Poli</th>
+                        <th>Dokter</th>
+                        <th>Keterangan</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Contoh jadwal hardcode / dummy -->
+                    <tr>
+                        <td>Senin</td>
+                        <td>08.00 - 12.00</td>
+                        <td>Poli Umum</td>
+                        <td>dr. Umum 1</td>
+                        <td>Pagi</td>
+                    </tr>
+                    <tr>
+                        <td>Senin</td>
+                        <td>13.00 - 16.00</td>
+                        <td>Poli Gigi</td>
+                        <td>drg. Gigi 1</td>
+                        <td>Siang</td>
+                    </tr>
+                    <tr>
+                        <td>Selasa</td>
+                        <td>08.00 - 12.00</td>
+                        <td>Poli Anak</td>
+                        <td>dr. Anak 1</td>
+                        <td>Pagi</td>
+                    </tr>
+                    <tr>
+                        <td>Rabu</td>
+                        <td>08.00 - 12.00</td>
+                        <td>Poli Umum</td>
+                        <td>dr. Umum 1</td>
+                        <td>Pagi</td>
+                    </tr>
+                    <tr>
+                        <td>Kamis</td>
+                        <td>13.00 - 16.00</td>
+                        <td>Poli Gigi</td>
+                        <td>drg. Gigi 1</td>
+                        <td>Siang</td>
+                    </tr>
+                    <tr>
+                        <td>Jumat</td>
+                        <td>08.00 - 11.00</td>
+                        <td>Poli Anak</td>
+                        <td>dr. Anak 1</td>
+                        <td>Pagi (pendek)</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+</body>
+</html>

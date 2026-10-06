@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Pasien per Poli</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/css/dokter.css" />
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        Klinik <span>Sehat</span>
+    </div>
+
+    <a th:href="@{/dokter/menu}" class="logout-btn">Kembali ke Menu</a>
+</header>
+
+<main class="dokter-wrapper">
+
+    <section>
+        <h2 class="dokter-header-title">
+            Pasien Poli <span th:text="${poli}">Umum</span>
+        </h2>
+        <p class="dokter-header-subtitle">
+            Daftar pasien yang terdaftar pada poli
+            <strong th:text="${poli}">Umum</strong>.
+        </p>
+    </section>
+
+    <section class="dokter-card pasien-card">
+        <header class="pasien-header">
+            <div>
+                <h3>
+                    Pasien Poli <span th:text="${poli}">Umum</span>
+                </h3>
+                <p>Berikut pasien yang sedang terdaftar di poli ini.</p>
+            </div>
+
+            <div class="poli-filter">
+                <a th:href="@{/dokter/pasien/poli/Umum}">Poli Umum</a>
+                <a th:href="@{/dokter/pasien/poli/Gigi}">Poli Gigi</a>
+                <a th:href="@{/dokter/pasien/poli/Anak}">Poli Anak</a>
+            </div>
+        </header>
+
+        <div class="pasien-table-wrapper">
+            <table class="pasien-table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>ID Pasien</th>
+                    <th>Nama Pasien</th>
+                    <th>Tgl Daftar</th>
+                    <th>No Antrian</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="pp, iter : ${pasienPoliList}">
+                    <td th:text="${iter.index + 1}">1</td>
+
+                    <!-- FIX RELASI -->
+                    <td th:text="${pp.pasien.idPengguna}">7</td>
+                    <td th:text="${pp.pasien.nama}">Nama Pasien</td>
+
+                    <td th:text="${pp.tglDaftar}">2025-11-22</td>
+                    <td th:text="${pp.noAntrian}">3</td>
+
+                    <td>
+                        <span class="status-chip"
+                              th:text="${pp.status}">MENUNGGU</span>
+                    </td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(pasienPoliList)}">
+                    <td colspan="6" class="pasien-empty">
+                        Belum ada pasien di poli ini.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+</body>
+</html>

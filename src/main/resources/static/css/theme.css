@@ -1,0 +1,29 @@
+.sb-sidenav-dark .sb-sidenav-menu-heading {
+    color: #28a745 !important;
+}
+
+.sb-sidenav-dark .nav-link:hover,
+.sb-sidenav-dark .nav-link.active {
+    background-color: #28a745 !important;
+    color: #ffffff !important;
+}
+
+.sb-sidenav-dark {
+    background-color: #212529 !important;
+}
+
+.sb-sidenav-dark .sb-sidenav-footer {
+    background-color: #343a40 !important;
+}
+
+.sb-topnav .navbar-brand {
+    color: #ffffff !important;
+}
+
+.sb-topnav {
+    border-bottom: none !important;
+}
+
+.sb-sidenav {
+    border-top: none !important;
+}

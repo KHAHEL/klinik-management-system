@@ -1,0 +1,107 @@
+body {
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f5f7fa;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 1050px;
+            height: 520px;
+            border-radius: 22px;
+            overflow: hidden;
+            display: flex;
+            background: white;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+        .left-panel {
+            width: 50%;
+            background: linear-gradient(135deg, #4CAF50, #2E993F);
+            color: white;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-panel h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .left-panel p {
+            font-size: 1.1rem;
+            margin-top: 10px;
+            opacity: 0.95;
+        }
+        .right-panel {
+            width: 50%;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #ffffff;
+        }
+
+        .right-panel h3 {
+            font-weight: 700;
+        }
+
+        .form-control {
+            height: 50px;
+            border-radius: 12px !important;
+            font-size: 1rem;
+            padding-left: 15px;
+        }
+
+        .btn-green {
+            background: #43A047;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            font-size: 17px;
+            color: white;
+            border-radius: 12px;
+        }
+
+        .btn-green:hover {
+            background: #3b8f40;
+        }
+
+        .btn-outline-green {
+            border: 2px solid #43A047;
+            padding: 12px;
+            width: 100%;
+            margin-top: 8px;
+            border-radius: 12px;
+            font-size: 17px;
+            color: #43A047;
+            background: transparent;
+        }
+
+        .btn-outline-green:hover {
+            background: #43A047;
+            color: white;
+        }
+
+        @media (max-width: 992px) {
+            .login-card {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .left-panel, .right-panel {
+                width: 100%;
+                height: auto;
+                padding: 40px;
+            }
+
+            .left-panel {
+                text-align: center;
+            }
+        }

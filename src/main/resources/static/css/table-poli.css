@@ -1,0 +1,72 @@
+
+.first-box {
+    background: #ffffff;
+    padding: 25px 30px;
+    margin: 25px auto;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    width: 90%;
+}
+
+.first-box h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-row label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #34495e;
+}
+
+.admin-form input[type="date"],
+.admin-form select {
+    padding: 10px 12px;
+    border: 1px solid #ced6e0;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.25s ease;
+    background-color: #f7f9fc;
+}
+
+.admin-form input[type="date"]:focus,
+.admin-form select:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+}
+
+.dokter-card-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    background: #3498db;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 8px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+}
+
+.dokter-card-btn:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.dokter-card-btn i {
+    margin-right: 6px;
+}

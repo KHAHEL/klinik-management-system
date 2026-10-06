@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Edit Pendaftaran Poli</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}" />
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">Klinik <span>Sehat</span></div>
+    <a th:href="@{/admin/pendaftaran-poli}" class="logout-btn">Kembali</a>
+</header>
+
+<main class="dokter-wrapper">
+    <section class="dokter-card pasien-card">
+        <h2>Edit Pendaftaran Poli</h2>
+
+        <form th:action="@{/admin/pendaftaran-poli/update}" method="post">
+
+            <input type="hidden" name="idDaftar" th:value="${pendaftaran.idDaftar}" />
+
+            <div class="form-row">
+                <label>Pasien</label>
+                <select name="id_pengguna">
+                    <option th:each="p : ${pasienList}"
+                            th:value="${p.idPengguna}"
+                            th:selected="${p.idPengguna == pendaftaran.idPengguna}"
+                            th:text="${p.nama}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label>Poli</label>
+                <select name="poli">
+                    <option value="Umum" th:selected="${pendaftaran.poli=='Umum'}">Umum</option>
+                    <option value="Gigi" th:selected="${pendaftaran.poli=='Gigi'}">Gigi</option>
+                    <option value="Anak" th:selected="${pendaftaran.poli=='Anak'}">Anak</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label>Tanggal</label>
+                <input type="date" name="tglDaftar" th:value="${pendaftaran.tglDaftar}" />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="dokter-card-btn">Update</button>
+            </div>
+        </form>
+
+        <!-- DELETE BUTTON -->
+        <form th:action="@{'/admin/pendaftaran-poli/delete/' + ${pendaftaran.idDaftar}}" method="post" style="margin-top: 20px;">
+            <button type="submit" class="dokter-card-btn" style="background:red;">
+                Hapus Pendaftaran
+            </button>
+        </form>
+
+    </section>
+</main>
+
+</body>
+</html>

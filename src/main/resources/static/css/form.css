@@ -1,0 +1,72 @@
+#feedback-form {
+    width: 1100px;
+    height: 1050px;
+    margin: 0 auto;
+    background-color: #ecf0f1;
+    padding: 25px 40px 40px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    color: #e5e5e5;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+#feedback-form * {
+    box-sizing: border-box;
+}
+
+#feedback-form h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+#feedback-form label {
+    display: block;
+    color: #aaa;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+#feedback-form input,
+#feedback-form select,
+#feedback-form textarea {
+    display: block;
+    width: 100%;
+    padding: 8px 14px;
+    margin-bottom: 15px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    background-color: #2b2b2b;
+    color: #fff;
+    font-size: 0.95em;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+#feedback-form input:focus,
+#feedback-form select:focus,
+#feedback-form textarea:focus {
+    border-color: #00c853;
+    outline: none;
+    background-color: #333;
+}
+
+#feedback-form button[type=submit],
+#feedback-form button {
+    display: inline-block;
+    width: 100px;
+    height: 38px;
+    margin: 5px;
+    border-radius: 25px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(90deg, #00c853, #00796b);
+    transition: 0.3s;
+}
+
+#feedback-form button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(90deg, #1de9b6, #00bfa5);
+}

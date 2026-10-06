@@ -1,0 +1,93 @@
+
+        body {
+            min-height: 100vh;
+            background: #f5f7fa;
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-card {
+            width: 100%;
+            max-width: 1100px;
+            border-radius: 22px;
+            overflow: hidden;
+            background: white;
+            display: flex;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .left-panel {
+            width: 40%;
+            padding: 60px 50px;
+            background: linear-gradient(135deg, #4CAF50, #2E993F);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-panel h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+        }
+
+        .left-panel p {
+            font-size: 1rem;
+            margin-top: 8px;
+            opacity: 0.95;
+        }
+        .right-panel {
+            width: 60%;
+            padding: 50px;
+            background: white;
+        }
+
+        .right-panel h3 {
+            font-weight: 700;
+        }
+
+        .form-control, .form-select, textarea {
+            height: 50px;
+            border-radius: 12px !important;
+        }
+
+        textarea {
+            height: 70px;
+            resize: none;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .full {
+            grid-column: span 2;
+        }
+
+        .btn-green {
+            background: #43A047;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            color: white;
+            font-size: 17px;
+            border-radius: 12px;
+        }
+
+        .btn-green:hover {
+            background: #3b8f40;
+        }
+
+        .back-login {
+            text-align: center;
+            display: block;
+            margin-top: 15px;
+            font-size: 15px;
+            text-decoration: none;
+            color: #43A047;
+        }

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profil Perawat</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/table.css">
+    <link rel="stylesheet" href="/css/form1.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/form.css}" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
+
+</head>
+
+<body class="sb-nav-fixed">
+
+    <!-- NAVBAR -->
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand ps-3" th:href="@{/perawat/dashboardPerawat}">Perawat</a>
+        <button class="btn btn-link btn-sm me-4" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="navbar-nav ms-auto me-3">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" data-bs-toggle="dropdown">
+                    <i class="fas fa-user fa-fw"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" th:href="@{/logout}">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- SIDEBAR -->
+    <div id="layoutSidenav">
+
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark">
+
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+
+                        <div class="sb-sidenav-menu-heading">Menu</div>
+
+                        <a class="nav-link" th:href="@{/perawat/dashboardPerawat}">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dashboard
+                        </a>
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Pendaftaran
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+
+                        <div class="collapse" id="collapseLayouts">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" th:href="@{/perawat/home}">Daftar Pasien</a>
+                                <a class="nav-link" th:href="@{/perawat/pasienPerPoli}">Pasien Per Poli</a>
+                                <a class="nav-link" th:href="@{/perawat/jadwalPerawat}">Jadwal Shift</a>
+                                <a class="nav-link" th:href="@{/perawat/profilPerawat}">Lihat Profil</a>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="sb-sidenav-footer">
+                    <div class="small">Logged in as:</div>
+                    <span th:text="${logPerawat.username}"></span>
+                </div>
+            </nav>
+        </div>
+
+        <!-- CONTENT -->
+        <div id="layoutSidenav_content">
+
+            <div class="container p-4">
+
+                <h2>Profil Perawat</h2>
+
+                <!-- PROFILE TABLE -->
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <th>Ruang Kerja</th>
+                            <th>Umur</th>
+                            <th>Gender</th>
+                            <th>Alamat</th>
+                            <th>No Telp</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td th:text="${perawatRec.idPengguna}"></td>
+                            <td th:text="${perawatRec.nama}"></td>
+                            <td th:text="${perawatRec.ruangKerja}"></td>
+                            <td th:text="${perawatRec.umur}"></td>
+                            <td th:text="${perawatRec.gender}"></td>
+                            <td th:text="${perawatRec.alamat}"></td>
+                            <td th:text="${perawatRec.noTelp}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- =============================== -->
+                <!--  DUMMY JADWAL SHIFT PERAWAT     -->
+                <!-- =============================== -->
+
+                <div class="first-box mt-4">
+                    <h3>Jadwal Shift (Dummy Data)</h3>
+
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Hari</th>
+                                <th>Shift</th>
+                                <th>Jam Mulai</th>
+                                <th>Jam Selesai</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Senin</td>
+                                <td>A</td>
+                                <td>08:00</td>
+                                <td>14:00</td>
+                            </tr>
+                            <tr>
+                                <td>Selasa</td>
+                                <td>B</td>
+                                <td>14:00</td>
+                                <td>20:00</td>
+                            </tr>
+                            <tr>
+                                <td>Rabu</td>
+                                <td>A</td>
+                                <td>08:00</td>
+                                <td>14:00</td>
+                            </tr>
+                            <tr>
+                                <td>Kamis</td>
+                                <td>C</td>
+                                <td>20:00</td>
+                                <td>08:00</td>
+                            </tr>
+                            <tr>
+                                <td>Jumat</td>
+                                <td>A</td>
+                                <td>08:00</td>
+                                <td>14:00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- =============================== -->
+                <!-- FORM EDIT PROFIL                -->
+                <!-- =============================== -->
+
+                <div class="second-box mt-4" id="editForm">
+                <h3>Edit Profil Perawat</h3>
+
+                <form method="POST" th:action="@{/perawat/submitPerawat/{id}(id=${perawatRec.idPengguna})}" class="admin-form">
+
+                    <div class="form-row">
+                        <label>ID Pengguna</label>
+                        <input type="number" name="idPengguna" th:value="${perawatRec.idPengguna}" readonly />
+                    </div>
+
+                    <div class="form-row">
+                        <label>Nama Lengkap</label>
+                        <input type="text" name="nama" th:value="${perawatRec.nama}" required />
+                    </div>
+
+                    <div class="form-row">
+                        <label>Ruang Kerja</label>
+                        <input type="text" name="ruangKerja" th:value="${perawatRec.ruangKerja}" required />
+                    </div>
+
+                    <div class="form-row">
+                        <label>Umur</label>
+                        <input type="number" name="umur" th:value="${perawatRec.umur}" required />
+                    </div>
+
+                    <div class="form-row">
+                        <label>Jenis Kelamin</label>
+                        <select name="gender" required>
+                            <option value="L" th:selected="${perawatRec.gender == 'L'}">Laki-laki</option>
+                            <option value="P" th:selected="${perawatRec.gender == 'P'}">Perempuan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <label>Alamat</label>
+                        <textarea name="alamat" th:text="${perawatRec.alamat}"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <label>No Telepon</label>
+                        <input type="text" name="noTelp" th:value="${perawatRec.noTelp}" required />
+                    </div>
+
+                    <div class="form-row">
+                        <label>Username</label>
+                        <input type="text" name="username" th:value="${perawatRec.username}" required />
+                    </div>
+
+                    <div class="form-row">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="Kosongkan jika tidak ganti" />
+                    </div>
+
+                    <div class="form-row">
+                        <label>Gaji</label>
+                        <input type="number" name="gaji" th:value="${perawatRec.gaji}" required />
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Update</button>
+                        
+                        </div>
+                </form>
+            </div>
+
+</body>
+</html>
